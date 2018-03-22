@@ -43,6 +43,7 @@ class App(cmd.Cmd):
         '''
         def get_args(self, args):
             try:
+                print(type(args))
                 opt = docopt(fn.__doc__, args)
                 App.prompt = dynamic_promt()
                 return fn(self, opt)
@@ -57,10 +58,12 @@ class App(cmd.Cmd):
         print_error(invalid_command, status='Command Does Not exist')
         prompt = dynamic_promt(color='red',
                                         symbole=unicode_sadface)
-    
+
     @argument_parser
     def do_add_contact(self, person_information):
         """
+            person_information(dict): User person_information
+
             Usage:
                 add_contact <firtname> <secondname> <phone_number>
         """
